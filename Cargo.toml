@@ -42,8 +42,8 @@ features = [
     "socket-icmp",
     "socket-udp",
     "socket-tcp",
-    "log",
-    "verbose"
+    #"log",
+    #"verbose"
 ]
 optional = true
 
