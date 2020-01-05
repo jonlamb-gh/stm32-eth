@@ -31,9 +31,20 @@ git = "https://github.com/jonlamb-gh/stm32f4xx-hal.git"
 branch = "home-phone-changes"
 
 [dependencies.smoltcp]
-version = "0.5.0"
+#version = "0.5.0"
+git = "https://github.com/m-labs/smoltcp.git"
+branch = "master"
 default-features = false
-features = ["proto-ipv4", "proto-ipv6","socket-icmp", "socket-udp", "socket-tcp", "log", "verbose"]
+features = [
+    "ethernet",
+    "proto-ipv4",
+    "proto-ipv6",
+    "socket-icmp",
+    "socket-udp",
+    "socket-tcp",
+    "log",
+    "verbose"
+]
 optional = true
 
 [features]

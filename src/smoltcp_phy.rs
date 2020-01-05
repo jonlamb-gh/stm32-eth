@@ -1,6 +1,6 @@
 use crate::{rx::RxPacket, tx::TxError, Eth};
 use core::intrinsics::transmute;
-use core::ops::Deref;
+use core::ops::DerefMut;
 use smoltcp::phy::{Device, DeviceCapabilities, RxToken, TxToken};
 use smoltcp::time::Instant;
 use smoltcp::Error;
@@ -45,11 +45,11 @@ pub struct EthRxToken<'a> {
 }
 
 impl<'a> RxToken for EthRxToken<'a> {
-    fn consume<R, F>(self, _timestamp: Instant, f: F) -> Result<R, Error>
+    fn consume<R, F>(mut self, _timestamp: Instant, f: F) -> Result<R, Error>
     where
-        F: FnOnce(&[u8]) -> Result<R, Error>,
+        F: FnOnce(&mut [u8]) -> Result<R, Error>,
     {
-        let result = f(self.packet.deref());
+        let result = f(self.packet.deref_mut());
         self.packet.free();
         result
     }
