@@ -31,9 +31,7 @@ git = "https://github.com/jonlamb-gh/stm32f4xx-hal.git"
 branch = "home-phone-changes"
 
 [dependencies.smoltcp]
-#version = "0.5.0"
-git = "https://github.com/m-labs/smoltcp.git"
-branch = "master"
+version = "0.6.0"
 default-features = false
 features = [
     "ethernet",
